@@ -1,0 +1,2 @@
+## Data Structure
+Different people have different learning style. For me, I learn best by rewriting line by line how things work under the hook. The code here is what I rewrite from [data-structure](https://github.com/shady831213/algorithms).
