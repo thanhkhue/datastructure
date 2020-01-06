@@ -20,11 +20,18 @@ func (c *chainedHashMap) Init(cap uint32) {
 	}
 }
 
-// func (c *chainedHashMap) Move(cap uint32) {
-// 	oldBuckets := c.buckets
-// 	c.Init(cap)
+func (c *chainedHashMap) Move(cap uint32) {
+	oldBuckets := c.buckets
+	c.Init(cap)
+	for _, list := range oldBuckets {
+		if list != nil {
+			for e := list.Front(); e != nil; e.Next() {
+				c.Insert(e.Value.(element).Key, e.Value.(element).Value)
+			}
+		}
+	}
 
-// }
+}
 
 func (c *chainedHashMap) hash(key interface{}) uint32 {
 	hashValue := c.HashFunc(key, sha256.New())
